@@ -9,12 +9,14 @@ const Header = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   return (
-    <header>
+    <header className="p-3">
       <nav
-        className="flex items-center justify-between w-full md:container mx-auto relative bg-white rounded-full px-5 py-2 my-3 shadow">
+        className="flex items-center justify-between w-full md:container mx-auto relative bg-white rounded-full px-5 shadow">
 
         {/* logo */}
-        <img src="https://i.imgur.com/DGGbzmK.png" alt="logo" className="w-[80px] " />
+        <div>
+          <img src="https://i.imgur.com/DGGbzmK.png" alt="logo" className="w-[70px] " />
+        </div>
 
         {/* nav links */}
         <ul className="items-center gap-[20px] text-[1rem] text-[#424242] lg:flex hidden">
