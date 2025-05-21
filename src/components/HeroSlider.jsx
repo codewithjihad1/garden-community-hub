@@ -1,17 +1,21 @@
-import React from 'react'
-import { Typewriter } from 'react-simple-typewriter';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-const HeroSlider = () => {
+import "../assets/style.css"
 
 
-    // Banner slides data
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Typewriter } from 'react-simple-typewriter';
+
+export default function App() {
+
+
     const bannerSlides = [
         {
             id: 1,
@@ -37,48 +41,48 @@ const HeroSlider = () => {
     ];
 
 
+
     return (
-        <section className='pb-10'>
-            <div className="container mx-auto">
-                <Swiper
-                    modules={[EffectFade, Autoplay, Pagination]}
-                    effect="fade"
-                    autoplay={{ delay: 5000 }}
-                    pagination={{ clickable: true }}
-                    className=""
+        <section className='container mx-auto rounded-lg overflow-hidden'>
+            <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                // autoplay={{
+                //     delay: 2500,
+                //     disableOnInteraction: false,
+                // }}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                loop={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
             >
                 {bannerSlides.map((slide) => (
                     <SwiperSlide key={slide.id}>
-                        <div
-                            className="relative min-h-[600px] w-full bg-cover bg-center bg-no-repeat"
-                            style={{ backgroundImage: `url(${slide.image})` }}
-                        >
-                            <div className="absolute inset-0 bg-black bg-opacity-50">
-                                <div className="container mx-auto px-4 h-full flex items-center">
-                                    <div className="text-white max-w-2xl">
-                                        <h2 className="text-4xl font-bold mb-4">
-                                            <Typewriter
-                                                words={[slide.title]}
-                                                loop={true}
-                                                cursor
-                                                cursorStyle="_"
-                                                typeSpeed={70}
-                                            />
-                                        </h2>
-                                        <p className="text-xl mb-8">{slide.description}</p>
-                                        <button className="btn-primary">
-                                            {slide.buttonText}
-                                        </button>
-                                    </div>
-                                </div>
+                        {/* <img src={slide.image} alt={slide.title} /> */}
+                        <div className=' bg-cover bg-center' style={{ backgroundImage: `url(${slide.image})` }}>
+                            <div className='flex flex-col items-center justify-center min-h-[500px] bg-[#0000007a] p-4 rounded-lg'>
+                                <h2 className="text-4xl text-white font-bold mb-4">
+                                    <Typewriter
+                                        words={[slide.title]}
+                                        loop={true}
+                                        cursor
+                                        cursorStyle="_"
+                                        typeSpeed={70}
+                                    />
+                                </h2>
+                                <p className="text-xl text-gray-100 mb-8">{slide.description}</p>
+                                <button className="btn btn-primary bg-green-600 hover:bg-green-700 border-none">
+                                    {slide.buttonText}
+                                </button>
                             </div>
                         </div>
+
                     </SwiperSlide>
                 ))}
             </Swiper>
-            </div>
         </section>
-    )
+    );
 }
-
-export default HeroSlider
