@@ -24,7 +24,7 @@ const FeaturedGardeners = () => {
     }, []);
 
     return (
-        <div className="container mx-auto p-8">
+        <div className="container mx-auto py-8">
             <Fade direction="up">
                 <h2 className="text-3xl text-green-800 font-bold text-center mb-12">Featured Gardeners</h2>
             </Fade>
