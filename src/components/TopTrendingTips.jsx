@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 
 // data/tips.js 
-export const tipsData = [
+const tipsData = [
     {
         id: 1,
         title: "Water Plants Early",
