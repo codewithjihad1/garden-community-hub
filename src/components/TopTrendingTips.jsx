@@ -11,7 +11,7 @@ const tipsData = [
         plantType: "Tomato",
         difficulty: "Medium",
         description: "By using grow lights and proper air circulation, I’m able to grow juicy tomatoes inside my apartment all year round.",
-        images: ["https://example.com/images/tomatoes-indoor-1.jpg", "https://example.com/images/tomatoes-indoor-2.jpg"],
+        images: "https://i.imgur.com/0Y9hHmE.jpeg",
         category: "Indoor Gardening",
         availability: "Public",
         user: {
@@ -25,7 +25,7 @@ const tipsData = [
         plantType: "General",
         difficulty: "Easy",
         description: "Learn how to turn kitchen scraps into nutrient-rich compost for your garden.",
-        images: ["https://example.com/images/compost-bin.jpg"],
+        images: "https://cdn.shopify.com/s/files/1/0649/8494/0772/files/shutterstock_160161059.jpg?v=1660706299",
         category: "Composting",
         availability: "Public",
         user: {
@@ -39,7 +39,7 @@ const tipsData = [
         plantType: "Basil",
         difficulty: "Easy",
         description: "A simple method to grow fresh basil using minimal space and sunlight.",
-        images: ["https://example.com/images/basil-window.jpg"],
+        images: "https://i.imgur.com/x0ncS61.jpeg",
         category: "Herbs & Spices",
         availability: "Public",
         user: {
@@ -53,7 +53,7 @@ const tipsData = [
         plantType: "Various",
         difficulty: "Hard",
         description: "My custom vertical gardening system for maximizing space in urban environments.",
-        images: ["https://example.com/images/vertical-garden.jpg"],
+        images: "https://i.imgur.com/B16CdPO.jpeg",
         category: "Vertical Gardening",
         availability: "Public",
         user: {
@@ -67,7 +67,7 @@ const tipsData = [
         plantType: "Succulents",
         difficulty: "Medium",
         description: "Tips for keeping succulents healthy when moisture levels are high.",
-        images: ["https://example.com/images/succulent-care.jpg"],
+        images: "https://i.imgur.com/InUHUUG.jpeg",
         category: "Plant Care",
         availability: "Hidden",
         user: {

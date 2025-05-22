@@ -4,7 +4,7 @@ const TipCard = ({ tip }) => {
     return (
         <div className="bg-white rounded-2xl shadow-md p-4 max-w-md mx-auto hover:shadow-lg transition duration-300">
             <img
-                src={tip.images[0]}
+                src={tip.images}
                 alt={tip.title}
                 className="rounded-xl h-48 w-full object-cover mb-4"
             />

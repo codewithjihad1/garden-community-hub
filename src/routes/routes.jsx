@@ -6,6 +6,8 @@ import Signup from "../pages/Signup";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import ForgetPassword from "../pages/ForgetPassword";
+import ShareGardenTip from "../pages/ShareGardenTip";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
                     { path: "signup", Component: Signup },
                     { path: "reset", Component: ForgetPassword },
                 ],
+            },
+            {
+                path: "/share-garden-tip",
+                element: <ProtectedRoute><ShareGardenTip /></ProtectedRoute>,
             },
         ],
         errorElement: <ErrorPage />
