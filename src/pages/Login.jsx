@@ -12,7 +12,7 @@ const Login = () => {
   const { loginWithEmailPassword, loginWithGoogle, errorMessage } = useContext(AuthContext)
 
   // Document title update
-  useDocumentTitle("Login - EventExplorer")
+  useDocumentTitle("Login - Gardening Community")
 
 
   const handleEmailPasswordLogin = (e) => {
@@ -84,7 +84,7 @@ const Login = () => {
             Don't have an account?{" "}
           </span>
           <span>
-            <Link to={"/auth/register"} className="text-[1rem] text-primary font-[500]">
+            <Link to={"/auth/signup"} className="text-[1rem] text-primary font-[500]">
               Signup
             </Link>
           </span>

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 
 
 const Header = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const { user, logout } = useContext(AuthContext);
+  console.log("🚀 ~ Header ~ user:", user)
 
   return (
     <header className="p-3">
@@ -44,16 +47,18 @@ const Header = () => {
 
         {/* action buttons */}
         <div className="items-center gap-[10px] flex">
-          <Link
-            to="/auth/login"
-            className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize hover:text-green-600 transition-all duration-300 sm:flex hidden">Sign
-            in
-          </Link>
-          <Link
-            to="/auth/signup"
-            className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600 text-white hover:bg-green-700 transition-all duration-300 sm:flex hidden">Sign
-            up
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-[10px]">  
+              <img src={user?.photoURL} alt="user" className="w-[30px] h-[30px] rounded-full" />
+              <button onClick={logout} className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600   text-white hover:bg-green-700 transition-all duration-300 sm:flex hidden">Logout</button>
+            </div>
+          ) : (
+            <Link
+              to="/auth/login"
+              className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600 text-white hover:bg-green-700 transition-all duration-300 sm:flex hidden">Sign
+              in
+            </Link>
+          )}
 
           <CiMenuFries
             className="text-[1.8rem] mr-1 text-[#424242] cursor-pointer lg:hidden flex"

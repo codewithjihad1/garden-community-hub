@@ -47,10 +47,10 @@ export default function App() {
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
-                // autoplay={{
-                //     delay: 2500,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }}
                 pagination={{
                     clickable: true,
                 }}
@@ -74,7 +74,7 @@ export default function App() {
                                     />
                                 </h2>
                                 <p className="text-xl text-gray-100 mb-8">{slide.description}</p>
-                                <button className="btn btn-primary bg-green-600 hover:bg-green-700 border-none">
+                                <button className="btn btn-primary bg-primary hover:bg-primary border-none">
                                     {slide.buttonText}
                                 </button>
                             </div>

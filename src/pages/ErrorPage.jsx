@@ -8,7 +8,7 @@ const ErrorPage = () => {
 
 
     return (
-        <div className="boxShadow px-10 w-full flex items-center flex-col justify-center py-20 rounded-xl">
+        <div className="boxShadow px-10 w-full flex items-center flex-col justify-center py-20 rounded-xl h-screen">
             <img src="https://i.ibb.co/SVMTKPy/Frame-5.png" alt="illustration"
                 className="w-full lg:w-[400px]" />
             <p className="text-[#73718A] text-[0.9rem] sm:text-[1.2rem] w-full lg:w-[55%] text-center mt-10 lg:mt-4">The

@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
+import Loading from '../components/Loading';
 
 const AuthContext = createContext({});
 
@@ -14,6 +15,9 @@ const AuthProvider = ({ children }) => {
     const logout = () => {
         setLoading(true)
         signOut(auth)
+            .then(() => {
+                setLoading(false)
+            })
             .catch(error => {
                 setLoading(false)
                 setErrorMessage(error.message)
@@ -23,7 +27,7 @@ const AuthProvider = ({ children }) => {
     // Login email password
     const loginWithEmailPassword = (email, password) => {
         setLoading(true)
-        signInWithEmailAndPassword(auth, email, password)
+        return signInWithEmailAndPassword(auth, email, password)
             .catch(error => {
                 setLoading(false)
                 setErrorMessage(error.message)
@@ -33,7 +37,7 @@ const AuthProvider = ({ children }) => {
     // signup with email password
     const signupWithEmailPassword = (email, password, name, photoUrl) => {
         setLoading(true)
-        createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
                 profileUpdate(name, photoUrl)
             })
@@ -46,7 +50,7 @@ const AuthProvider = ({ children }) => {
     // login with google
     const loginWithGoogle = () => {
         setLoading(true)
-        signInWithPopup(auth, provider)
+        return signInWithPopup(auth, provider)
             .catch(error => {
                 setLoading(false)
                 setErrorMessage(error.message)
@@ -91,6 +95,7 @@ const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     }, []);
 
+    // context value
     const value = {
         user,
         loading,
@@ -106,7 +111,7 @@ const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={value}>
-            {!loading && children}
+            {loading ? <Loading /> : children}
         </AuthContext.Provider>
     );
 };

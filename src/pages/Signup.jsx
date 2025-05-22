@@ -11,7 +11,7 @@ const Signup = () => {
     const { signupWithEmailPassword, loginWithGoogle, errorMessage } = useContext(AuthContext)
 
     // Document title update
-    useDocumentTitle("Register - EventExplorer")
+    useDocumentTitle("Signup - Gardening Community")
 
     // create account with email and password
     const handleEmailPasswordSignup = (e) => {

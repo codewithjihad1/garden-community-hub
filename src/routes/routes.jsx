@@ -4,6 +4,7 @@ import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Home from "../pages/Home";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
                 ],
             },
         ],
+        errorElement: <ErrorPage />
     },
 ]);
 
