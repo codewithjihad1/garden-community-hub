@@ -8,6 +8,8 @@ import ErrorPage from "../pages/ErrorPage";
 import ForgetPassword from "../pages/ForgetPassword";
 import ShareGardenTip from "../pages/ShareGardenTip";
 import ProtectedRoute from "./ProtectedRoute";
+import BrowseTipsPage from "../pages/BrowsTipsPage";
+import ExploreGardeners from "../pages/ExploreGardeners";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
                 path: "/share-garden-tip",
                 element: <ProtectedRoute><ShareGardenTip /></ProtectedRoute>,
             },
+            {
+                path: '/browse-tips',
+                Component: BrowseTipsPage
+            },
+            {
+                path: "/explore-gardeners",
+                Component: ExploreGardeners
+            }
         ],
         errorElement: <ErrorPage />
     },
