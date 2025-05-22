@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
                 children: [
                     { path: "login", Component: Login },
                     { path: "signup", Component: Signup },
+                    { path: "reset", Component: ForgetPassword },
                 ],
             },
         ],

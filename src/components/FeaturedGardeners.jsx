@@ -1,18 +1,120 @@
 import React, { useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
+import GardenerCard from './GardenerCard';
 
 const gardenerData = [
-    { id: 1, name: "Alice Green", location: "Portland, OR", experience: "5 years", specialty: "Urban Gardening", status: "active" },
-    { id: 2, name: "Ben Bloom", location: "Austin, TX", experience: "8 years", specialty: "Vegetable Gardens", status: "active" },
-    { id: 3, name: "Cathy Leaf", location: "Seattle, WA", experience: "4 years", specialty: "Permaculture", status: "inactive" },
-    { id: 4, name: "David Root", location: "Boulder, CO", experience: "6 years", specialty: "Hydroponics", status: "active" },
-    { id: 5, name: "Ella Fern", location: "Asheville, NC", experience: "3 years", specialty: "Flower Gardening", status: "inactive" },
-    { id: 6, name: "Frank Moss", location: "Madison, WI", experience: "7 years", specialty: "Sustainable Landscaping", status: "active" },
-    { id: 7, name: "Grace Sprout", location: "Santa Cruz, CA", experience: "2 years", specialty: "Herb Gardens", status: "active" },
-    { id: 8, name: "Hank Thorn", location: "Burlington, VT", experience: "10 years", specialty: "Organic Farming", status: "inactive" },
-    { id: 9, name: "Isla Bud", location: "Eugene, OR", experience: "6 years", specialty: "Native Plants", status: "active" },
-    { id: 10, name: "Jake Grove", location: "Chapel Hill, NC", experience: "9 years", specialty: "Edible Landscapes", status: "inactive" }
+    {
+        id: 1,
+        name: "Alice Brown",
+        age: 34,
+        gender: "Female",
+        status: "active",
+        experiences: "5 years of balcony and indoor gardening",
+        image: "https://randomuser.me/api/portraits/women/21.jpg",
+        totalSharedTips: 8,
+        location: "Austin, TX"
+    },
+    {
+        id: 2,
+        name: "George Lee",
+        age: 45,
+        gender: "Male",
+        status: "active",
+        experiences: "Landscape gardener for 15+ years",
+        image: "https://randomuser.me/api/portraits/men/32.jpg",
+        totalSharedTips: 14,
+        certifications: ["Certified Horticulturist"]
+    },
+    {
+        id: 3,
+        name: "Maria Torres",
+        age: 29,
+        gender: "Female",
+        status: "active",
+        experiences: "Grows herbs and vegetables in containers",
+        image: "https://randomuser.me/api/portraits/women/41.jpg",
+        totalSharedTips: 5,
+        social: "@greenmaria"
+    },
+    {
+        id: 4,
+        name: "Daniel Kim",
+        age: 52,
+        gender: "Male",
+        status: "active",
+        experiences: "Retired botany teacher with lifelong gardening passion",
+        image: "https://randomuser.me/api/portraits/men/45.jpg",
+        totalSharedTips: 20,
+        location: "Seattle, WA"
+    },
+    {
+        id: 5,
+        name: "Nina Patel",
+        age: 38,
+        gender: "Female",
+        status: "active",
+        experiences: "Urban farming specialist and garden designer",
+        image: "https://randomuser.me/api/portraits/women/55.jpg",
+        totalSharedTips: 12,
+        business: "Grow Green Solutions"
+    },
+    {
+        id: 6,
+        name: "Henry Nguyen",
+        age: 26,
+        gender: "Male",
+        status: "active",
+        experiences: "Backyard gardener with a focus on composting",
+        image: "https://randomuser.me/api/portraits/men/23.jpg",
+        totalSharedTips: 4,
+        blog: "soilsecrets.blog"
+    },
+    {
+        id: 7,
+        name: "Linda Zhao",
+        age: 60,
+        gender: "Female",
+        status: "inactive",
+        experiences: "Retired florist, now gardens for joy and relaxation",
+        image: "https://randomuser.me/api/portraits/women/60.jpg",
+        totalSharedTips: 16,
+        gardenName: "Peaceful Petals"
+    },
+    {
+        id: 8,
+        name: "Carlos Rivera",
+        age: 42,
+        gender: "Male",
+        status: "inactive",
+        experiences: "Owns a local nursery and teaches plant care workshops",
+        image: "https://randomuser.me/api/portraits/men/51.jpg",
+        totalSharedTips: 10,
+        certifications: ["Master Gardener"]
+    },
+    {
+        id: 9,
+        name: "Emma Wilson",
+        age: 31,
+        gender: "Female",
+        status: "inactive",
+        experiences: "Uses vertical gardening for small space planting",
+        image: "https://randomuser.me/api/portraits/women/34.jpg",
+        totalSharedTips: 6,
+        youtube: "youtube.com/@growwithemma"
+    },
+    {
+        id: 10,
+        name: "Rajiv Das",
+        age: 48,
+        gender: "Male",
+        status: "inactive",
+        experiences: "10 years specializing in hydroponics and organic gardening",
+        image: "https://randomuser.me/api/portraits/men/70.jpg",
+        totalSharedTips: 18,
+        location: "New Delhi, India"
+    }
 ];
+
 
 const FeaturedGardeners = () => {
     const [activeGardeners, setActiveGardeners] = useState([]);
@@ -30,14 +132,7 @@ const FeaturedGardeners = () => {
             </Fade>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {activeGardeners.map(gardener => (
-                    <div key={gardener.id} className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition">
-                        <h3 className="text-xl font-semibold text-green-700">{gardener.name}</h3>
-                        <p className="text-sm text-gray-600">{gardener.location}</p>
-                        <div className="mt-3 text-sm text-green-400">
-                            <p><strong>Experience:</strong> {gardener.experience}</p>
-                            <p><strong>Specialty:</strong> {gardener.specialty}</p>
-                        </div>
-                    </div>
+                    <GardenerCard key={gardener.id} gardener={gardener} />
                 ))}
             </div>
         </div>

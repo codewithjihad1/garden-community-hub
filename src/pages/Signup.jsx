@@ -91,7 +91,7 @@ const Signup = () => {
                 </div>
 
                 <div className="text-[1rem] ">
-                    <input type="checkbox" name="checkbox" id="checkbox" required />{" "}
+                    <input type="checkbox" className="accent-primary" name="checkbox" id="checkbox" required />{" "}
                     <label htmlFor="checkbox" className="cursor-pointer">
                         By clicking, I agree to signup{" "}
                         <a href="#" className=" text-primary">
