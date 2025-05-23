@@ -3,6 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { Tooltip } from "react-tooltip";
 
 
 
@@ -47,14 +48,21 @@ const Header = () => {
         {/* action buttons */}
         <div className="items-center gap-[10px] flex">
           {user ? (
-            <div className="flex items-center gap-[10px]">  
-              <img src={user?.photoURL} alt="user" className="w-[30px] h-[30px] rounded-full" />
-              <button onClick={logout} className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600   text-white hover:bg-green-700 transition-all duration-300 sm:flex hidden">Logout</button>
+            <div className="flex items-center gap-[10px] z-40">
+              <img
+                src={user?.photoURL}
+                alt="user"
+                className="w-[30px] h-[30px] rounded-full cursor-pointer"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={`${user.displayName}`} />
+              <Tooltip id="my-tooltip" />
+              <button onClick={logout} 
+              className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600 text-white hover:bg-green-700 transition-all duration-300 sm:flex cursor-pointer hidden">Logout</button>
             </div>
           ) : (
             <Link
               to="/auth/login"
-              className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600 text-white hover:bg-green-700 transition-all duration-300 sm:flex hidden">Sign
+              className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600 text-white hover:bg-green-700 transition-all duration-300 sm:flex cursor-pointer hidden">Sign
               in
             </Link>
           )}

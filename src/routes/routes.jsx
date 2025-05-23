@@ -43,15 +43,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/tips/:id",
-                Component: TipDetails
+                element: <ProtectedRoute><TipDetails /></ProtectedRoute>
             },
             {
                 path: '/my-tips',
-                Component: MyTips
+                element: <ProtectedRoute><MyTips /></ProtectedRoute>
             },
             {
                 path: "/update-tip/:id",
-                Component: UpdateTip
+                Component: <ProtectedRoute><UpdateTip /></ProtectedRoute>
             }
         ],
         errorElement: <ErrorPage />

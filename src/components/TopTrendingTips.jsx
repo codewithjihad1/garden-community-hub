@@ -27,7 +27,7 @@ const TopTrendingTips = () => {
             </Fade>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {tips.map(tip => (
-                    <TipCard key={tip.id} tip={tip} />
+                    <TipCard key={tip._id} tip={tip} />
                 ))}
             </div>
         </div>

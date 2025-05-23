@@ -2,6 +2,8 @@ import React from 'react'
 import HeroSlider from '../components/HeroSlider'
 import FeaturedGardeners from '../components/FeaturedGardeners'
 import TopTrendingTips from '../components/TopTrendingTips'
+import SuccessStories from '../components/SuccessStories'
+import UpcomingEvents from '../components/UpcomingEvents'
 
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
       <HeroSlider />
       <FeaturedGardeners />
       <TopTrendingTips />
+      <UpcomingEvents />
+      <SuccessStories />
     </>
 
   )
