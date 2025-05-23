@@ -16,19 +16,47 @@ const MyTips = () => {
 
                 const mockTips = [
                     {
-                        id: "1",
-                        title: "Tomato Indoor Tips",
+                        id: 1,
+                        title: "How I Grow Tomatoes Indoors",
+                        plantType: "Tomato",
+                        difficulty: "Medium",
+                        description: "By using grow lights and proper air circulation, I’m able to grow juicy tomatoes inside my apartment all year round.",
+                        image: "https://i.imgur.com/0Y9hHmE.jpeg",
                         category: "Indoor Gardening",
                         availability: "Public",
-                        imageUrl: "https://source.unsplash.com/100x70/?tomato",
+                        user: {
+                            name: "Jane Doe",
+                            email: "jane@example.com"
+                        }
                     },
                     {
-                        id: "2",
-                        title: "Homemade Compost Secret",
+                        id: 2,
+                        title: "Beginner’s Guide to Composting",
+                        plantType: "General",
+                        difficulty: "Easy",
+                        description: "Learn how to turn kitchen scraps into nutrient-rich compost for your garden.",
+                        image: "https://cdn.shopify.com/s/files/1/0649/8494/0772/files/shutterstock_160161059.jpg?v=1660706299",
                         category: "Composting",
-                        availability: "Hidden",
-                        imageUrl: "https://source.unsplash.com/100x70/?compost",
+                        availability: "Public",
+                        user: {
+                            name: "Tom Green",
+                            email: "tom.green@example.com"
+                        }
                     },
+                    {
+                        id: 3,
+                        title: "Growing Basil on Your Windowsill",
+                        plantType: "Basil",
+                        difficulty: "Easy",
+                        description: "A simple method to grow fresh basil using minimal space and sunlight.",
+                        image: "https://i.imgur.com/x0ncS61.jpeg",
+                        category: "Herbs & Spices",
+                        availability: "Public",
+                        user: {
+                            name: "Lina Smith",
+                            email: "lina.smith@example.com"
+                        }
+                    }
                 ];
                 setTips(mockTips);
             } catch (err) {
@@ -52,7 +80,7 @@ const MyTips = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="container mx-auto p-6">
             <h2 className="text-2xl font-bold mb-4 text-green-700">🌿 My Garden Tips</h2>
 
             <div className="overflow-x-auto shadow border rounded-lg">
@@ -70,7 +98,7 @@ const MyTips = () => {
                         {tips.map((tip) => (
                             <tr key={tip.id} className="hover:bg-green-50">
                                 <td className="p-2 border">
-                                    <img src={tip.imageUrl} alt={tip.title} className="w-20 h-14 object-cover rounded" />
+                                    <img src={tip.image} alt={tip.title} className="w-20 h-14 object-cover rounded" />
                                 </td>
                                 <td className="p-2 border">{tip.title}</td>
                                 <td className="p-2 border">{tip.category}</td>
