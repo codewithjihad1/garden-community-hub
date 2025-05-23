@@ -1,38 +1,20 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { api } from "../services/GetServices";
 
 const ShareGardenTip = () => {
-    // const [formData, setFormData] = useState({
-    //     title: "",
-    //     plantType: "",
-    //     difficulty: "Easy",
-    //     description: "",
-    //     imageUrl: "",
-    //     category: "Plant Care",
-    //     availability: "Public",
-    //     email: user.email,
-    //     name: user.name,
-    // });
-    const {user} = useContext(AuthContext)
-
+    const { user } = useContext(AuthContext)
     const [submitted, setSubmitted] = useState(false);
-
-    // const handleChange = (e) => {
-    //     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = e.target;
 
         const tipData = new FormData(formData);
-        const tip = Object.fromEntries(tipData);
-        console.log("🚀 ~ handleSubmit ~ tip:", tip)
+        const tip = Object.fromEntries(tipData.entries());
 
         try {
-            // Simulate API call with setTimeout or replace with actual POST
-            // await axios.post('/api/tips', formData);
-            console.log("Submitted data:", formData);
+            await api.post('/tips', tip);
             setSubmitted(true);
         } catch (error) {
             console.error("Error submitting tip:", error);
@@ -103,7 +85,7 @@ const ShareGardenTip = () => {
                         <label className="block text-sm font-medium text-gray-700">Image URL</label>
                         <input
                             type="url"
-                            name="imageUrl"
+                            name="images"
                             // value={formData.imageUrl}
                             // onChange={handleChange}
                             required

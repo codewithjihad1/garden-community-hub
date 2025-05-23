@@ -1,50 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { api } from "../services/GetServices";
+import Loading from "../components/Loading";
 // import axios from "axios"; // Use for real DB
 
 const TipDetails = () => {
-    const { id } = useParams(); // URL param
-    const [tip, setTip] = useState(null);
+    const { id } = useParams();
+    const [tip, setTip] = useState({});
     const [liked, setLiked] = useState(false);
+    const [loading, setLoading] = useState(true)
+
+
 
     useEffect(() => {
-        const fetchTip = async () => {
+        const getData = async () => {
             try {
-                // Example: const response = await axios.get(`/api/tips/${id}`);
-                // setTip(response.data);
-
-                // Mock Data (Replace with API call)
-                const mockTip = {
-                    id: 1,
-                    title: "How I Grow Tomatoes Indoors",
-                    plantType: "Tomato",
-                    difficulty: "Medium",
-                    description: "By using grow lights and proper air circulation, I’m able to grow juicy tomatoes inside my apartment all year round.",
-                    image: "https://i.imgur.com/0Y9hHmE.jpeg",
-                    category: "Indoor Gardening",
-                    availability: "Public",
-                    user: {
-                        name: "Jane Doe",
-                        email: "jane@example.com"
-                    }
-                }
-                setTip(mockTip);
-            } catch (err) {
-                console.error("Error fetching tip:", err);
+                const res = await api.get(`/tips/${id}`)
+                setTip(res.data)
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+                setLoading(false)
             }
-        };
+        }
 
-        fetchTip();
-    }, [id]);
+        getData()
+    }, [id])
+
 
     const handleLike = () => {
         setLiked(!liked);
-        // Optionally send like to DB
     };
 
-    if (!tip) {
-        return <div className="text-center py-10 text-gray-600">Loading...</div>;
-    }
+    // When data is loading
+    if (loading) return <Loading />
 
     return (
         <div className="max-w-4xl mx-auto p-6">
@@ -57,7 +46,7 @@ const TipDetails = () => {
                 </div>
 
                 <img
-                    src={tip.image}
+                    src={tip.images}
                     alt={tip.title}
                     className="w-full h-64 object-cover rounded-md mb-6"
                 />

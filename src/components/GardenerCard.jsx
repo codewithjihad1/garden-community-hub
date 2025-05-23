@@ -1,6 +1,7 @@
 import React from "react";
 
 const GardenerCard = ({ gardener }) => {
+
     return (
         <div className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300">
             <div className="flex items-center space-x-4 mb-4">
@@ -16,6 +17,8 @@ const GardenerCard = ({ gardener }) => {
             </div>
 
             <div className="text-sm text-gray-700 mb-3 space-y-1">
+
+                <p><span className="font-medium">Email: </span> {gardener.email}</p>
                 <p><span className="font-medium">Age:</span> {gardener.age}</p>
                 <p><span className="font-medium">Gender:</span> {gardener.gender}</p>
                 <p><span className="font-medium">Experience:</span> {gardener.experiences}</p>

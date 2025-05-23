@@ -39,8 +39,8 @@ const TipCard = ({ tip }) => {
             </div>
 
             <div className="text-sm text-gray-500 mt-4 border-t pt-2">
-                <p>Posted by: <span className="font-medium">{tip.user.name}</span></p>
-                <p className="text-xs">{tip.user.email}</p>
+                <p>Posted by: <span className="font-medium">{tip.name}</span></p>
+                <p className="text-xs">{tip.email}</p>
             </div>
         </div>
     );

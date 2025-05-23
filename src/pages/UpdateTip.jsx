@@ -1,58 +1,54 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { api } from "../services/GetServices";
+import Loading from "../components/Loading";
 // import axios from "axios";
 
 const UpdateTip = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams();
-    const navigate = useNavigate();
-    const [tip, setTip] = useState(null);
-    const [updated, setUpdated] = useState(false);
+    const [tip, setTip] = useState({});
+    const [loading, setLoading] = useState(true)
+    const [updated, setUpdated] = useState(false)
+
+    const navigate = useNavigate()
+
 
     useEffect(() => {
-        const fetchTip = async () => {
+        const getData = async () => {
             try {
-                // const res = await axios.get(`/api/tips/${id}`);
-                const mockTip = {
-                    id: 1,
-                    title: "How I Grow Tomatoes Indoors",
-                    plantType: "Tomato",
-                    difficulty: "Medium",
-                    description: "By using grow lights and proper air circulation, I’m able to grow juicy tomatoes inside my apartment all year round.",
-                    image: "https://i.imgur.com/0Y9hHmE.jpeg",
-                    category: "Indoor Gardening",
-                    availability: "Public",
-                    user: {
-                        name: "Jane Doe",
-                        email: "jane@example.com"
-                    }
-                };
-                setTip(mockTip);
-            } catch (err) {
-                console.error("Failed to load tip:", err);
+                const res = await api.get(`/tips/${id}`)
+                setTip(res.data)
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+                setLoading(false)
             }
-        };
-        fetchTip();
-    }, [id]);
+        }
 
-    const handleChange = (e) => {
-        setTip({ ...tip, [e.target.name]: e.target.value });
-    };
+        getData()
+    }, [id])
 
     const handleUpdate = async (e) => {
         e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form)
+        const updatedTip = Object.fromEntries(formData.entries());
+
         try {
-            // await axios.put(`/api/tips/${id}`, tip);
-            console.log("Updated tip:", tip);
+            await api.put(`/tips/${id}`, updatedTip);
             setUpdated(true);
+            console.log("Updated tip:", tip);
             setTimeout(() => navigate("/my-tips"), 2000);
         } catch (err) {
             console.error("Update failed", err);
         }
     };
 
-    if (!tip) return <div className="p-6 text-gray-500">Loading...</div>;
+    // When data is loading
+    if (loading) return <Loading />
+
 
     return (
         <div className="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
@@ -70,6 +66,7 @@ const UpdateTip = () => {
                             type="text"
                             name="title"
                             required
+                            defaultValue={tip.title}
                             className="w-full mt-1 p-2 border rounded-md"
                             placeholder="e.g., How I Grow Tomatoes Indoors"
                         />
@@ -80,8 +77,7 @@ const UpdateTip = () => {
                         <input
                             type="text"
                             name="plantType"
-                            // value={formData.plantType}
-                            // onChange={handleChange}
+                            defaultValue={tip.plantType}
                             required
                             className="w-full mt-1 p-2 border rounded-md"
                         />
@@ -91,8 +87,7 @@ const UpdateTip = () => {
                         <label className="block text-sm font-medium text-gray-700">Difficulty</label>
                         <select
                             name="difficulty"
-                            // value={formData.difficulty}
-                            // onChange={handleChange}
+                            defaultValue={tip.difficulty}
                             className="w-full mt-1 p-2 border rounded-md"
                         >
                             <option>Easy</option>
@@ -105,8 +100,7 @@ const UpdateTip = () => {
                         <label className="block text-sm font-medium text-gray-700">Description</label>
                         <textarea
                             name="description"
-                            // value={formData.description}
-                            // onChange={handleChange}
+                            defaultValue={tip.description}
                             rows="4"
                             required
                             className="w-full mt-1 p-2 border rounded-md"
@@ -118,9 +112,8 @@ const UpdateTip = () => {
                         <label className="block text-sm font-medium text-gray-700">Image URL</label>
                         <input
                             type="url"
-                            name="imageUrl"
-                            // value={formData.imageUrl}
-                            // onChange={handleChange}
+                            name="images"
+                            defaultValue={tip.images}
                             required
                             className="w-full mt-1 p-2 border rounded-md"
                             placeholder="https://example.com/image.jpg"
@@ -131,8 +124,7 @@ const UpdateTip = () => {
                         <label className="block text-sm font-medium text-gray-700">Category</label>
                         <select
                             name="category"
-                            // value={formData.category}
-                            // onChange={handleChange}
+                            defaultValue={tip.category}
                             className="w-full mt-1 p-2 border rounded-md"
                         >
                             <option>Composting</option>
@@ -147,8 +139,7 @@ const UpdateTip = () => {
                         <label className="block text-sm font-medium text-gray-700">Availability</label>
                         <select
                             name="availability"
-                            // value={formData.availability}
-                            // onChange={handleChange}
+                            defaultValue={tip.availability}
                             className="w-full mt-1 p-2 border rounded-md"
                         >
                             <option>Public</option>

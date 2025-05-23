@@ -1,66 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { api } from "../services/GetServices";
+import Loading from "../components/Loading";
 // import axios from "axios";
 
 const MyTips = () => {
     const { user } = useContext(AuthContext)
     const [tips, setTips] = useState([]);
-    const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+    const [loading, setLoading] = useState(true)
+    // const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
     useEffect(() => {
         const fetchMyTips = async () => {
             try {
-                // Example: const res = await axios.get(`/api/tips?email=${user.email}`);
-                // setTips(res.data);
-
-                const mockTips = [
-                    {
-                        id: 1,
-                        title: "How I Grow Tomatoes Indoors",
-                        plantType: "Tomato",
-                        difficulty: "Medium",
-                        description: "By using grow lights and proper air circulation, I’m able to grow juicy tomatoes inside my apartment all year round.",
-                        image: "https://i.imgur.com/0Y9hHmE.jpeg",
-                        category: "Indoor Gardening",
-                        availability: "Public",
-                        user: {
-                            name: "Jane Doe",
-                            email: "jane@example.com"
-                        }
-                    },
-                    {
-                        id: 2,
-                        title: "Beginner’s Guide to Composting",
-                        plantType: "General",
-                        difficulty: "Easy",
-                        description: "Learn how to turn kitchen scraps into nutrient-rich compost for your garden.",
-                        image: "https://cdn.shopify.com/s/files/1/0649/8494/0772/files/shutterstock_160161059.jpg?v=1660706299",
-                        category: "Composting",
-                        availability: "Public",
-                        user: {
-                            name: "Tom Green",
-                            email: "tom.green@example.com"
-                        }
-                    },
-                    {
-                        id: 3,
-                        title: "Growing Basil on Your Windowsill",
-                        plantType: "Basil",
-                        difficulty: "Easy",
-                        description: "A simple method to grow fresh basil using minimal space and sunlight.",
-                        image: "https://i.imgur.com/x0ncS61.jpeg",
-                        category: "Herbs & Spices",
-                        availability: "Public",
-                        user: {
-                            name: "Lina Smith",
-                            email: "lina.smith@example.com"
-                        }
-                    }
-                ];
-                setTips(mockTips);
+                const res = await api.get(`/tips?email=${user.email}`);
+                setTips(res.data);
+                setLoading(false)
             } catch (err) {
                 console.error("Failed to fetch tips:", err);
+                setLoading(false)
             }
         };
 
@@ -72,12 +31,16 @@ const MyTips = () => {
         if (!confirmed) return;
 
         try {
-            // await axios.delete(`/api/tips/${id}`);
-            setTips((prev) => prev.filter((tip) => tip.id !== id));
+            await api.delete(`/tips/${id}`);
+            setTips((prev) => prev.filter((tip) => tip._id !== id));
         } catch (err) {
             console.error("Delete failed", err);
         }
     };
+
+
+    // When data is loading
+    if (loading) return <Loading />
 
     return (
         <div className="container mx-auto p-6">
@@ -96,22 +59,22 @@ const MyTips = () => {
                     </thead>
                     <tbody>
                         {tips.map((tip) => (
-                            <tr key={tip.id} className="hover:bg-green-50">
+                            <tr key={tip._id} className="hover:bg-green-50">
                                 <td className="p-2 border">
-                                    <img src={tip.image} alt={tip.title} className="w-20 h-14 object-cover rounded" />
+                                    <img src={tip.images} alt={tip.title} className="w-20 h-14 object-cover rounded" />
                                 </td>
                                 <td className="p-2 border">{tip.title}</td>
                                 <td className="p-2 border">{tip.category}</td>
                                 <td className="p-2 border">{tip.availability}</td>
                                 <td className="p-2 border text-center space-x-2">
                                     <Link
-                                        to={`/update-tip/${tip.id}`}
+                                        to={`/update-tip/${tip._id}`}
                                         className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
                                     >
                                         ✏️ Update
                                     </Link>
                                     <button
-                                        onClick={() => handleDelete(tip.id)}
+                                        onClick={() => handleDelete(tip._id)}
                                         className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
                                     >
                                         🗑️ Delete
@@ -119,6 +82,8 @@ const MyTips = () => {
                                 </td>
                             </tr>
                         ))}
+
+                        {/* Tips not found */}
                         {tips.length === 0 && (
                             <tr>
                                 <td colSpan="5" className="text-center p-4 text-gray-500">
