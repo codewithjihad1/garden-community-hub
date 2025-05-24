@@ -7,16 +7,15 @@ import { getFeaturedGardeners } from '../services/GetServices';
 const FeaturedGardeners = () => {
     const [activeGardeners, setActiveGardeners] = useState([]);
 
-    const getFeaturedData = async () => {
-        try {
-            const res = await getFeaturedGardeners()
-            setActiveGardeners(res.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
+        const getFeaturedData = async () => {
+            try {
+                const res = await getFeaturedGardeners()
+                setActiveGardeners(res.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
         getFeaturedData()
     }, []);
 

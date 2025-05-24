@@ -25,7 +25,7 @@ const BrowseTipsPage = () => {
 
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 container mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-green-700">🌱 Public Garden Tips</h2>
 
       <div className="overflow-x-auto rounded-lg shadow">
@@ -35,6 +35,7 @@ const BrowseTipsPage = () => {
               <th className="py-2 px-4 text-left border">Image</th>
               <th className="py-2 px-4 text-left border">Title</th>
               <th className="py-2 px-4 text-left border">Category</th>
+              <th className="py-2 px-4 text-left border">Level</th>
               <th className="py-2 px-4 text-center border">Action</th>
             </tr>
           </thead>
@@ -50,6 +51,7 @@ const BrowseTipsPage = () => {
                 </td>
                 <td className="border px-4 py-2 font-medium">{tip.title}</td>
                 <td className="border px-4 py-2">{tip.category}</td>
+                <td className="border px-4 py-2">{tip.difficulty}</td>
                 <td className="border px-4 py-2 text-center">
                   <Link
                     to={`/tips/${tip._id}`}

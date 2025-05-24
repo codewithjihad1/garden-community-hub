@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/update-tip/:id",
-                Component: <ProtectedRoute><UpdateTip /></ProtectedRoute>
+                element: <ProtectedRoute><UpdateTip /></ProtectedRoute>
             }
         ],
         errorElement: <ErrorPage />
