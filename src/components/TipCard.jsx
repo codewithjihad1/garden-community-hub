@@ -2,14 +2,14 @@ import React from "react";
 
 const TipCard = ({ tip }) => {
     return (
-        <div className="bg-white rounded-2xl shadow-md p-4 max-w-md mx-auto hover:shadow-lg transition duration-300">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-4 max-w-md mx-auto hover:shadow-lg transition duration-300">
             <img
                 src={tip.images}
                 alt={tip.title}
                 className="rounded-xl h-48 w-full object-cover mb-4"
             />
-            <h2 className="text-xl font-semibold text-gray-800 mb-1">{tip.title}</h2>
-            <p className="text-sm text-gray-600 mb-2">{tip.description}</p>
+            <h2 className="text-xl font-semibold text-gray-800 mb-1 dark:text-gray-200">{tip.title}</h2>
+            <p className="text-sm text-gray-600 mb-2 dark:text-gray-200">{tip.description}</p>
 
             <div className="flex flex-wrap gap-2 mb-2">
                 <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
@@ -38,7 +38,7 @@ const TipCard = ({ tip }) => {
                 </span>
             </div>
 
-            <div className="text-sm text-gray-500 mt-4 border-t pt-2">
+            <div className="text-sm text-gray-500 mt-4 border-t pt-2 dark:text-gray-200">
                 <p>Posted by: <span className="font-medium">{tip.name}</span></p>
                 <p className="text-xs">{tip.email}</p>
             </div>

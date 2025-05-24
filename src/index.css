@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme "light" {
     --color-primary: #339527;
 }
@@ -12,7 +14,7 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
 }
 
 a.active {

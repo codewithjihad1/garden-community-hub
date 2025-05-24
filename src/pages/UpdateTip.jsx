@@ -51,8 +51,8 @@ const UpdateTip = () => {
 
 
     return (
-        <div className="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-2xl font-bold mb-4 text-green-700">Share a Garden Tip</h2>
+        <div className="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md dark:bg-gray-800">
+            <h2 className="text-2xl font-bold mb-4 text-green-700 dark:text-gray-100">Share a Garden Tip</h2>
 
             {updated ? (
                 <div className="bg-green-100 text-green-800 px-4 py-2 rounded">
@@ -61,7 +61,7 @@ const UpdateTip = () => {
             ) : (
                 <form onSubmit={handleUpdate} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Title</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Title</label>
                         <input
                             type="text"
                             name="title"
@@ -73,7 +73,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Plant Type / Topic</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Plant Type / Topic</label>
                         <input
                             type="text"
                             name="plantType"
@@ -84,7 +84,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Difficulty</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Difficulty</label>
                         <select
                             name="difficulty"
                             defaultValue={tip.difficulty}
@@ -97,7 +97,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Description</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Description</label>
                         <textarea
                             name="description"
                             defaultValue={tip.description}
@@ -109,7 +109,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Image URL</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Image URL</label>
                         <input
                             type="url"
                             name="images"
@@ -121,7 +121,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Category</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Category</label>
                         <select
                             name="category"
                             defaultValue={tip.category}
@@ -136,7 +136,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Availability</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Availability</label>
                         <select
                             name="availability"
                             defaultValue={tip.availability}
@@ -148,7 +148,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Name</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
                         <input
                             type="text"
                             name="name"
@@ -160,7 +160,7 @@ const UpdateTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
                         <input
                             type="text"
                             name="email"

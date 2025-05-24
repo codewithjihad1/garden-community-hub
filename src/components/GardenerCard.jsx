@@ -3,7 +3,7 @@ import React from "react";
 const GardenerCard = ({ gardener }) => {
 
     return (
-        <div className="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-5 hover:shadow-lg transition duration-300">
             <div className="flex items-center space-x-4 mb-4">
                 <img
                     src={gardener.image}
@@ -11,13 +11,12 @@ const GardenerCard = ({ gardener }) => {
                     className="w-16 h-16 rounded-full border-2 border-green-400 object-cover"
                 />
                 <div>
-                    <h2 className="text-xl font-semibold text-gray-800">{gardener.name}</h2>
-                    <p className="text-sm text-gray-500">{gardener.status}</p>
+                    <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">{gardener.name}</h2>
+                    <p className="text-sm text-gray-500 dark:text-gray-200">{gardener.status}</p>
                 </div>
             </div>
 
-            <div className="text-sm text-gray-700 mb-3 space-y-1">
-
+            <div className="text-sm text-gray-700 mb-3 space-y-1 dark:text-gray-100">
                 <p><span className="font-medium">Email: </span> {gardener.email}</p>
                 <p><span className="font-medium">Age:</span> {gardener.age}</p>
                 <p><span className="font-medium">Gender:</span> {gardener.gender}</p>

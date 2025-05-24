@@ -44,11 +44,11 @@ const MyTips = () => {
 
     return (
         <div className="container mx-auto p-6">
-            <h2 className="text-2xl font-bold mb-4 text-green-700">🌿 My Garden Tips</h2>
+            <h2 className="text-2xl font-bold mb-4 text-green-700 dark:text-gray-100">🌿 My Garden Tips</h2>
 
             <div className="overflow-x-auto shadow border rounded-lg">
-                <table className="min-w-full bg-white">
-                    <thead className="bg-green-100">
+                <table className="min-w-full bg-white dark:bg-gray-800">
+                    <thead className="bg-green-100 dark:bg-gray-700">
                         <tr>
                             <th className="p-2 border">Image</th>
                             <th className="p-2 border">Title</th>
@@ -59,7 +59,7 @@ const MyTips = () => {
                     </thead>
                     <tbody>
                         {tips.map((tip) => (
-                            <tr key={tip._id} className="hover:bg-green-50">
+                            <tr key={tip._id} className="hover:bg-green-50 dark:hover:bg-gray-500">
                                 <td className="p-2 border">
                                     <img src={tip.images} alt={tip.title} className="w-20 h-14 object-cover rounded" />
                                 </td>

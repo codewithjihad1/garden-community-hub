@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 
 const stories = [
     {
@@ -32,13 +33,15 @@ const stories = [
 
 const SuccessStories = () => {
     return (
-        <section className="bg-green-50 py-12 px-6 lg:px-20">
+        <section className="py-12 px-6 lg:px-20">
             <div className="container mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-green-700">
-                        Gardening Success Stories
-                    </h2>
-                    <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
+                    <Fade direction="up">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-green-700 dark:text-white">
+                            Gardening Success Stories
+                        </h2>
+                    </Fade>
+                    <p className="text-gray-600 mt-2 max-w-2xl mx-auto dark:text-gray-200">
                         Meet our amazing community members who transformed their gardening dreams into reality.
                     </p>
                 </div>
@@ -47,16 +50,16 @@ const SuccessStories = () => {
                     {stories.map(({ id, name, beforeImage, afterImage, story, tip }) => (
                         <div
                             key={id}
-                            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+                            className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
                         >
                             <div className="grid grid-cols-2 gap-0">
                                 <img src={beforeImage} alt="Before" className="w-full h-40 object-cover" />
                                 <img src={afterImage} alt="After" className="w-full h-40 object-cover" />
                             </div>
                             <div className="p-5">
-                                <h3 className="text-xl font-semibold text-green-800">{name}</h3>
-                                <p className="text-gray-600 text-sm mt-2">{story}</p>
-                                <div className="mt-4 p-3 bg-green-100 border-l-4 border-green-500 text-green-700 text-sm italic rounded">
+                                <h3 className="text-xl font-semibold text-green-800 dark:text-white">{name}</h3>
+                                <p className="text-gray-600 text-sm mt-2 dark:text-gray-200">{story}</p>
+                                <div className="mt-4 p-3 bg-green-100 dark:bg-gray-100 border-l-4 border-green-500 text-green-700 text-sm italic rounded">
                                     🌱 Tip: {tip}
                                 </div>
                             </div>

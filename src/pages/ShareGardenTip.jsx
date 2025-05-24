@@ -22,7 +22,7 @@ const ShareGardenTip = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
+        <div className="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md dark:bg-gray-800">
             <h2 className="text-2xl font-bold mb-4 text-green-700">Share a Garden Tip</h2>
 
             {submitted ? (
@@ -32,7 +32,7 @@ const ShareGardenTip = () => {
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Title</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Title</label>
                         <input
                             type="text"
                             name="title"
@@ -43,19 +43,20 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Plant Type / Topic</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Plant Type / Topic</label>
                         <input
                             type="text"
                             name="plantType"
                             // value={formData.plantType}
                             // onChange={handleChange}
+                            placeholder="Plant type"
                             required
                             className="w-full mt-1 p-2 border rounded-md"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Difficulty</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Difficulty</label>
                         <select
                             name="difficulty"
                             // value={formData.difficulty}
@@ -69,7 +70,7 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Description</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Description</label>
                         <textarea
                             name="description"
                             // value={formData.description}
@@ -82,7 +83,7 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Image URL</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Image URL</label>
                         <input
                             type="url"
                             name="images"
@@ -95,7 +96,7 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Category</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Category</label>
                         <select
                             name="category"
                             // value={formData.category}
@@ -111,7 +112,7 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Availability</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Availability</label>
                         <select
                             name="availability"
                             // value={formData.availability}
@@ -124,7 +125,7 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Name</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
                         <input
                             type="text"
                             name="name"
@@ -136,7 +137,7 @@ const ShareGardenTip = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
                         <input
                             type="text"
                             name="email"
