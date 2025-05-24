@@ -3,6 +3,7 @@ import TipCard from "../components/TipCard";
 import { FaEye } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { api } from "../services/GetServices";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 
 const BrowseTipsPage = () => {
@@ -31,6 +32,8 @@ const BrowseTipsPage = () => {
     setFilterTipsData(filterData)
   }
 
+  // Document title
+  useDocumentTitle("Brows Tips")
 
   return (
     <div className="p-6 container mx-auto">

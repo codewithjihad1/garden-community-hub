@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { api } from "../services/GetServices";
 import Loading from "../components/Loading";
+import useDocumentTitle from "../hooks/useDocumentTitle";
+import { toast } from "react-toastify";
 // import axios from "axios";
 
 const MyTips = () => {
@@ -32,12 +34,24 @@ const MyTips = () => {
 
         try {
             await api.delete(`/tips/${id}`);
+            toast.success("Deleted Successfully!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
             setTips((prev) => prev.filter((tip) => tip._id !== id));
         } catch (err) {
             console.error("Delete failed", err);
         }
     };
 
+    // Document title
+    useDocumentTitle("My Tips")
 
     // When data is loading
     if (loading) return <Loading />

@@ -4,6 +4,7 @@ import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import { toast } from "react-toastify";
 
 const Signup = () => {
     const [active, setActive] = useState(false);
@@ -23,6 +24,16 @@ const Signup = () => {
 
         signupWithEmailPassword(email, password, name, photoUrl)
             .then(() => {
+                toast.success("Signup Success!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light"
+                });
                 navigate(`${location.state ? location.state : "/"}`)
             })
     }
@@ -32,6 +43,16 @@ const Signup = () => {
         e.preventDefault();
         loginWithGoogle()
             .then(() => {
+                toast.success("Google signup success!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light"
+                });
                 navigate(location.state || "/")
             })
     }

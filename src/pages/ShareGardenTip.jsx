@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { api } from "../services/GetServices";
+import useDocumentTitle from "../hooks/useDocumentTitle";
+import { toast } from "react-toastify";
 
 const ShareGardenTip = () => {
     const { user } = useContext(AuthContext)
@@ -19,10 +21,23 @@ const ShareGardenTip = () => {
         try {
             await api.post('/tips', tip);
             setSubmitted(true);
+            toast.success("Successfully added garden tip", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
         } catch (error) {
             console.error("Error submitting tip:", error);
         }
     };
+
+    // Document title
+    useDocumentTitle("share garden Tips")
 
     return (
         <div className="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md dark:bg-gray-800">

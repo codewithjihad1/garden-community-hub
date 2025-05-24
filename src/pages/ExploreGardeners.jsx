@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import GardenerCard from '../components/GardenerCard';
 import { api } from '../services/GetServices';
 import Loading from '../components/Loading';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 
 
@@ -24,6 +25,8 @@ const ExploreGardeners = () => {
         getData()
     }, [])
 
+    // Document title
+    useDocumentTitle("Explore Gardeners")
 
     // conditional rendering
     if (loading) return <Loading />

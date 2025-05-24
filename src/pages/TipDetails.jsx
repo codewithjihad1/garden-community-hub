@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { api } from "../services/GetServices";
 import Loading from "../components/Loading";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 // import axios from "axios"; // Use for real DB
 
 const TipDetails = () => {
@@ -39,6 +40,10 @@ const TipDetails = () => {
             console.error("Error updating like:", error);
         }
     };
+
+
+    // Document title
+  useDocumentTitle("Tip Details")
 
     // When data is loading
     if (loading) return <Loading />

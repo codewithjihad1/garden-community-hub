@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { api } from "../services/GetServices";
 import Loading from "../components/Loading";
+import useDocumentTitle from "../hooks/useDocumentTitle";
+import { toast } from "react-toastify";
 // import axios from "axios";
 
 const UpdateTip = () => {
@@ -39,12 +41,24 @@ const UpdateTip = () => {
         try {
             await api.put(`/tips/${id}`, updatedTip);
             setUpdated(true);
-            console.log("Updated tip:", tip);
+            toast.success("Successfully added garden tip", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light"
+            });
             setTimeout(() => navigate("/my-tips"), 2000);
         } catch (err) {
             console.error("Update failed", err);
         }
     };
+
+    // Document title
+    useDocumentTitle("Update tip")
 
     // When data is loading
     if (loading) return <Loading />

@@ -6,7 +6,7 @@ const ForgetPassword = () => {
     const { resetPasswordWithEmail, errorMessage } = useContext(AuthContext)
 
     // Document title update
-    useDocumentTitle("Forget password - EventExplorer")
+    useDocumentTitle("Forget password - Gardeners Community")
 
     // handle reset password
     const handleResetPassword = async (e) => {

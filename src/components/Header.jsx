@@ -6,11 +6,30 @@ import { AuthContext } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import { Tooltip } from "react-tooltip";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const { isDarkMode, toggleTheme } = useTheme();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success("Successfully added garden tip", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <header className="p-3">
@@ -70,7 +89,7 @@ const Header = () => {
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={`${user.displayName}`} />
               <Tooltip id="my-tooltip" />
-              <button onClick={logout}
+              <button onClick={handleLogout}
                 className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-green-600 text-white hover:bg-green-700 transition-all duration-300 sm:flex cursor-pointer hidden">Logout</button>
             </div>
           ) : (
