@@ -10,8 +10,6 @@ const TipDetails = () => {
     const [liked, setLiked] = useState(false);
     const [loading, setLoading] = useState(true)
 
-
-
     useEffect(() => {
         const getData = async () => {
             try {
@@ -28,8 +26,18 @@ const TipDetails = () => {
     }, [id])
 
 
-    const handleLike = () => {
-        setLiked(!liked);
+    const handleLike = async () => {
+        try {
+            const newLikeCount = liked ? tip.totalLiked - 1 : tip.totalLiked + 1;
+            const updatedTip = { ...tip, totalLiked: newLikeCount };
+            delete updatedTip._id
+
+            await api.put(`/tips/${id}`, updatedTip);
+            setTip(updatedTip);
+            setLiked(!liked);
+        } catch (error) {
+            console.error("Error updating like:", error);
+        }
     };
 
     // When data is loading
@@ -63,14 +71,16 @@ const TipDetails = () => {
                     <p>{tip.description}</p>
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-6 flex items-center gap-4">
                     <button
                         onClick={handleLike}
-                        className={`px-4 py-2 rounded-md text-white transition ${liked ? "bg-pink-500" : "bg-green-600 hover:bg-green-700"
-                            }`}
+                        className={`px-4 py-2 rounded-md text-white transition ${liked ? "bg-pink-500" : "bg-green-600 hover:bg-green-700"}`}
                     >
                         {liked ? "❤️ Liked" : "🤍 Like"}
                     </button>
+                    <span className="text-gray-600 dark:text-gray-300">
+                        {tip.totalLiked || 0} {tip.totalLiked === 1 ? 'like' : 'likes'}
+                    </span>
                 </div>
             </div>
         </div>

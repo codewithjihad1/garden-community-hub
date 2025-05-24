@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const TipCard = ({ tip }) => {
     return (
@@ -17,10 +18,10 @@ const TipCard = ({ tip }) => {
                 </span>
                 <span
                     className={`text-xs px-2 py-1 rounded-full ${tip.difficulty === "Easy"
-                            ? "bg-blue-100 text-blue-700"
-                            : tip.difficulty === "Medium"
-                                ? "bg-yellow-100 text-yellow-700"
-                                : "bg-red-100 text-red-700"
+                        ? "bg-blue-100 text-blue-700"
+                        : tip.difficulty === "Medium"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-red-100 text-red-700"
                         }`}
                 >
                     Difficulty: {tip.difficulty}
@@ -30,17 +31,30 @@ const TipCard = ({ tip }) => {
                 </span>
                 <span
                     className={`text-xs px-2 py-1 rounded-full ${tip.availability === "Public"
-                            ? "bg-green-200 text-green-800"
-                            : "bg-gray-200 text-gray-700"
+                        ? "bg-green-200 text-green-800"
+                        : "bg-gray-200 text-gray-700"
                         }`}
                 >
                     {tip.availability}
                 </span>
             </div>
 
-            <div className="text-sm text-gray-500 mt-4 border-t pt-2 dark:text-gray-200">
-                <p>Posted by: <span className="font-medium">{tip.name}</span></p>
-                <p className="text-xs">{tip.email}</p>
+            <div className="flex justify-between items-center mt-4 border-t pt-2">
+                <div className="text-sm text-gray-500 dark:text-gray-200">
+                    <p>Posted by: <span className="font-medium">{tip.name}</span></p>
+                    <p className="text-xs">{tip.email}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="text-sm text-gray-500 dark:text-gray-200">
+                        ❤️ {tip.totalLiked || 0}
+                    </span>
+                    <Link
+                        to={`/tips/${tip._id}`}
+                        className="text-green-600 hover:text-green-700 text-sm font-medium"
+                    >
+                        View Details
+                    </Link>
+                </div>
             </div>
         </div>
     );

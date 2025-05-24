@@ -13,6 +13,9 @@ const ShareGardenTip = () => {
         const tipData = new FormData(formData);
         const tip = Object.fromEntries(tipData.entries());
 
+        // Add totalLiked field with initial value of 0
+        tip.totalLiked = 0;
+
         try {
             await api.post('/tips', tip);
             setSubmitted(true);
