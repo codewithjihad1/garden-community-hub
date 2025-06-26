@@ -13,6 +13,11 @@ import ExploreGardeners from "../pages/ExploreGardeners";
 import TipDetails from "../pages/TipDetails";
 import MyTips from "../pages/MyTips";
 import UpdateTip from "../pages/UpdateTip";
+import Dashboard from "../pages/Dashboard";
+import AllTips from "../pages/AllTips";
+import DashboardMyTips from "../pages/DashboardMyTips";
+import DashboardAddTip from "../pages/DashboardAddTip";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const router = createBrowserRouter([
     {
@@ -52,10 +57,32 @@ const router = createBrowserRouter([
             {
                 path: "/update-tip/:id",
                 element: <ProtectedRoute><UpdateTip /></ProtectedRoute>
-            }
+            },
         ],
         errorElement: <ErrorPage />
     },
+    {
+        path: "/dashboard",
+        element: <ProtectedRoute><DashboardLayout /></ProtectedRoute>,
+        children: [
+            {
+                index: true,
+                element: <Dashboard />
+            },
+            {
+                path: "all-tips",
+                element: <AllTips />
+            },
+            {
+                path: "my-tips",
+                element: <DashboardMyTips />
+            },
+            {
+                path: "add-tip",
+                element: <DashboardAddTip />
+            }
+        ]
+    }
 ]);
 
 

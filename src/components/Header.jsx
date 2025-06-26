@@ -63,6 +63,12 @@ const Header = () => {
           <li className="before:w-0 hover:before:w-full before:bg-green-600 before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-green-600 transition-all duration-300 before:left-0 cursor-pointer capitalize">
             <NavLink to="/my-tips">My Tips</NavLink>
           </li>
+
+          {user && (
+            <li className="before:w-0 hover:before:w-full before:bg-green-600 before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-green-600 transition-all duration-300 before:left-0 cursor-pointer capitalize">
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </li>
+          )}
         </ul>
 
         {/* action buttons */}
@@ -135,6 +141,12 @@ const Header = () => {
             <li className="before:w-0 hover:before:w-full before:bg-green-600 before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-green-600 transition-all duration-300 before:left-0 cursor-pointer capitalize">
               <NavLink to="/my-tips">My Tips</NavLink>
             </li>
+
+            {user && (
+              <li className="before:w-0 hover:before:w-full before:bg-green-600 before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-green-600 transition-all duration-300 before:left-0 cursor-pointer capitalize">
+                <NavLink to="/dashboard">Dashboard</NavLink>
+              </li>
+            )}
 
           </ul>
         </aside>
