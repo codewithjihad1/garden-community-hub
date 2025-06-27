@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext';
-import { Link, Outlet } from 'react-router';
+import {  NavLink, Outlet } from 'react-router';
 import { FiLogOut } from "react-icons/fi";
 
 
@@ -16,7 +16,7 @@ const DashboardLayout = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dashboard">
             <div className="flex gap-5">
                 {/* Sidebar */}
                 <div className="flex flex-col justify-between w-64 bg-white dark:bg-gray-800 shadow-lg min-h-screen">
@@ -28,7 +28,7 @@ const DashboardLayout = () => {
                         {/* Navigation */}
                         <nav className="space-y-2">
                             {navigationItems.map((item) => (
-                                <Link
+                                <NavLink
                                     key={item.path}
                                     to={item.path}
                                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === item.path
@@ -38,7 +38,7 @@ const DashboardLayout = () => {
                                 >
                                     <span className="text-xl">{item.icon}</span>
                                     <span className="font-medium">{item.name}</span>
-                                </Link>
+                                </NavLink>
                             ))}
                         </nav>
 
